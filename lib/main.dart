@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     const Color.fromARGB(255, 175, 7, 21),
     Colors.yellow,
   ];
-  int appBar = 0;s
+  int appBar = 0;
   int scaffold = 0;
   Random random = new Random();
 
@@ -49,6 +49,7 @@ class _MyAppState extends State<MyApp> {
                   // brown = black;
                   // black = temp;
                   appBar = random.nextInt(6);
+                  scaffold = random.nextInt(6);
                 });
               },
               child: Center(child: Image.asset('images/dash.png'))),
