@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -30,6 +31,9 @@ class _MyAppState extends State<MyApp> {
   int appBar = 0;
   int scaffold = 0;
   Random random = new Random();
+  List sounds = ['Kick.wav', 'Ride.wav', 'Snare.wav', 'Tom.wav'];
+  int soundPositions = 0;
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +43,11 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             backgroundColor: colours[appBar],
             centerTitle: true,
+            title: IconButton(
+                onPressed: () {
+                  soundPositions = random.nextInt(4);
+                },
+                icon: Icon(Icons.refresh, color: Colors.black)),
             // title: Text("$count"),
           ),
           backgroundColor: colours[scaffold],
@@ -48,6 +57,7 @@ class _MyAppState extends State<MyApp> {
                   // temp = brown;
                   // brown = black;
                   // black = temp;
+                  player.play(AssetSource(sounds[soundPositions]));
                   appBar = random.nextInt(6);
                   scaffold = random.nextInt(6);
                 });
